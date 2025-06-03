@@ -3,12 +3,15 @@
    ============================ */
 
 :root {
-  --color-principal: #2a4054;
-  --color-secundario: #f5f5f5;
-  --color-acento: #ff6f61;
+  --color-principal: #2a4054;       /* Azul oscuro */
+  --color-secundario: #f5f5f5;      /* Gris muy claro */
+  --color-acento: #4b2cbb;          /* Púrpura vibrante */
+  --color-acento-light: #7360d1;    /* Variante clara de púrpura para hover */
   --fuente-principal: 'Poppins', sans-serif;
   --espaciado-maximo: 1200px;
   --espaciado-lateral: 1rem;
+  --radio-general: 8px;             /* Borde redondeado estándar */
+  --sombra-suave: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 *,
@@ -29,6 +32,28 @@ body {
   background-color: var(--color-secundario);
   color: var(--color-principal);
   line-height: 1.6;
+  overflow-x: hidden; /* Evita scroll horizontal innecesario */
+}
+
+/* ============================
+   ESTILO PARA ENLACE “SALTAR AL CONTENIDO”
+   ============================ */
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 1rem;
+  background-color: var(--color-principal);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radio-general);
+  font-size: 0.9rem;
+  z-index: 1000;
+  transition: top 0.3s ease-in-out;
+}
+
+.skip-link:focus {
+  top: 1rem;
 }
 
 /* ============================
@@ -54,6 +79,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: var(--sombra-suave);
 }
 
 .header-wrapper {
@@ -62,9 +88,16 @@ body {
   justify-content: space-between;
 }
 
-.logo {
+.logo a {
   font-size: 1.75rem;
   font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.logo a:hover {
+  color: var(--color-acento-light);
 }
 
 .main-nav ul {
@@ -77,41 +110,93 @@ body {
   color: #fff;
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s;
+  position: relative;
+  padding: 0.25rem 0;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-acento);
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: width 0.3s;
 }
 
 .main-nav a:hover {
-  color: var(--color-acento);
+  color: var(--color-acento-light);
+}
+
+.main-nav a:hover::after {
+  width: 100%;
 }
 
 .menu-toggle {
   display: none;
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   color: #fff;
   cursor: pointer;
+  transition: color 0.3s;
+}
+
+.menu-toggle:hover {
+  color: var(--color-acento-light);
 }
 
 /* ============================
    SECCIÓN HERO / PORTADA
    ============================ */
 
-.hero {
+.section-hero {
   background: url('../assets/images/hero-bg.jpg') center/cover no-repeat;
-  padding: 6rem 0;
-  color: #4b2cbb;
+  position: relative;
+  padding: 8rem 0 6rem;
   text-align: center;
+  color: #fff; /* Texto blanco sobre overlay */
 }
 
-.hero-content h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+.section-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5); /* Capa semitransparente */
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-text-box {
+  display: inline-block;
+  background-color: var(--color-acento);
+  color: #fff;
+  padding: 2rem 3rem;
+  border-radius: var(--radio-general);
+  text-align: center;
+  margin-bottom: 2rem;
+  max-width: 900px;
+  box-shadow: var(--sombra-suave);
+}
+
+.hero-title {
+  font-size: 3rem;
+  margin: 0;
   font-weight: 600;
 }
 
-.hero-content p {
-  font-size: 1.125rem;
+.hero-subtitle {
+  font-size: 1.25rem;
+  margin-top: 0.75rem;
+  line-height: 1.6;
+  opacity: 0.9;
 }
 
 /* ============================
@@ -124,16 +209,17 @@ body {
 
 .section-title {
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 2rem;
+  font-size: 2.25rem;
+  margin-bottom: 1.5rem;
   position: relative;
+  color: var(--color-principal);
 }
 
 .section-title::after {
   content: '';
   display: block;
-  width: 60px;
-  height: 3px;
+  width: 80px;
+  height: 4px;
   background-color: var(--color-acento);
   margin: 0.5rem auto 0;
 }
@@ -145,8 +231,11 @@ body {
 .iframe-container {
   position: relative;
   width: 100%;
-  padding-top: 56.25%;
+  padding-top: 56.25%; /* 16:9 */
   margin-bottom: 2rem;
+  box-shadow: var(--sombra-suave);
+  border-radius: var(--radio-general);
+  overflow: hidden;
 }
 
 .iframe-container iframe {
@@ -156,8 +245,6 @@ body {
   width: 100%;
   height: 100%;
   border: 0;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* ============================
@@ -167,12 +254,15 @@ body {
 .timeline-wrapper {
   width: 100%;
   margin-bottom: 2rem;
+  box-shadow: var(--sombra-suave);
+  border-radius: var(--radio-general);
+  overflow: hidden;
 }
 
 .timeline-wrapper iframe {
+  width: 100%;
+  height: 650px;
   border: none;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* ============================
@@ -181,16 +271,16 @@ body {
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.5rem;
 }
 
 .gallery-item {
   overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radio-general);
+  box-shadow: var(--sombra-suave);
   background-color: #fff;
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
 }
 
@@ -207,143 +297,151 @@ body {
 
 .gallery-item:hover {
   transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 /* ============================
-   GALERÍA DE IMÁGENES (CÓMICS)
-   (este bloque ya lo tenías; lo incluyo por contexto)
+   DESCRIPCIÓN ADICIONAL PARA GALERÍA
    ============================ */
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-}
-
-.gallery-item {
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  transition: transform 0.3s;
-  cursor: pointer;
-}
-
-.gallery-item img {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.3s;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.05);
-}
-
-.gallery-item:hover {
-  transform: translateY(-5px);
+.section-description {
+  text-align: center;
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
 }
 
 /* ============================
-   MODAL PARA AMPLIAR IMÁGENES (SIN SCROLL INTERNO)
+   MODAL PARA AMPLIAR IMÁGENES (AJUSTADO, CENTRADO, SIN SCROLL)
    ============================ */
 
+/* 1) Contenedor principal del modal */
 .modal {
-  display: none;                 /* Oculto por defecto */
   position: fixed;
-  z-index: 200;
-  left: 0;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.9);
-  overflow: hidden;              /* No permitimos scroll adicional */
+  z-index: 200;
+
+  /* Oculto por defecto */
+  display: none;
+
+  /* Flex para centrar el contenedor .modal-content */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Para que elementos absolute se posicionen respecto a .modal */
+  overflow: hidden;
 }
 
-/* Contenedor flexible que centra horizontal y vertical la imagen */
+/* 1.1) Mostrar modal cuando aria-hidden="false" */
+.modal[aria-hidden="false"] {
+  display: flex;
+}
+
+/* 2) Contenedor de la imagen solamente */
 .modal-content {
   position: relative;
-  width: 100%;
-  height: 100%;
+
+  /* Centrado absoluto para navegadores que no respeten bien el flex */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* Asegurarnos de no exceder los límites del viewport */
+  max-width: 100%;
+  max-height: 100%;
+
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* La imagen se ajusta siempre para caber en pantalla (90% width/height) */
+/* 3) La imagen dentro del modal */
 .modal-content img {
-  max-width: 90vw;               /* Máximo 90% del ancho de la ventana */
-  max-height: 90vh;              /* Máximo 90% del alto de la ventana */
+  display: block;
+
+  /* Máximo 80% del ancho o 80% del alto de la ventana */
+  max-width: 80vw;
+  max-height: 80vh;
+
+  /* Mantiene proporción */
   width: auto;
   height: auto;
-  user-select: none;
-  pointer-events: none;          /* Para evitar clics sobre la imagen en sí */
+
+  /* Evita rotaciones involuntarias */
+  object-fit: contain;
+  transform: none;
+
+  /* Bordes redondeados y sombra suave */
+  border-radius: var(--radio-general);
+  box-shadow: var(--sombra-suave);
 }
 
-/* ============================
-   BOTÓN CERRAR (“×”)
-   ============================ */
-
+/* 4) Botón Cerrar (“×”), posicionado respecto a .modal */
 .close {
   position: absolute;
   top: 1rem;
   right: 1rem;
   color: #fff;
-  font-size: 3rem;               /* Letra grande para que se vea fácilmente */
+  font-size: 3rem;
   font-weight: bold;
   cursor: pointer;
-  transition: color 0.3s;
+  transition: color 0.3s, transform 0.3s;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
-  z-index: 300;                  /* Siempre encima de la imagen */
+  z-index: 300;
 }
 
 .close:hover {
-  color: var(--color-acento);
+  color: var(--color-acento-light);
+  transform: scale(1.1);
 }
 
-/* ============================
-   FLECHAS DE NAVEGACIÓN (“←” y “→”)
-   ============================ */
-
+/* 5) Flechas de navegación (“←” y “→”), absolutas respecto a .modal */
 .prev,
 .next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   color: #fff;
-  font-size: 3rem;               /* Flechas grandes */
+  font-size: 3rem;
   font-weight: bold;
   cursor: pointer;
   user-select: none;
-  transition: color 0.3s;
-  padding: 0.5rem;               /* Área clicable mayor */
-  background-color: rgba(0, 0, 0, 0.4); /* Fondo semitransparente */
+  transition: color 0.3s, background-color 0.3s;
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.4);
   border-radius: 50%;
   z-index: 250;
 }
 
-.prev:hover,
-.next:hover {
-  color: var(--color-acento);
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
 .prev {
-  left: 1rem;                    /* Pegada al borde izquierdo */
+  left: 2rem;   /* 2rem desde el borde izquierdo de la ventana */
 }
 
 .next {
-  right: 1rem;                   /* Pegada al borde derecho */
+  right: 2rem;  /* 2rem desde el borde derecho de la ventana */
 }
 
-/* ============================
-   MEDIA QUERIES PARA MÓVILES PEQUEÑOS
-   ============================ */
+.prev:hover,
+.next:hover {
+  color: var(--color-acento-light);
+  background-color: rgba(0, 0, 0, 0.6);
+}
 
+/* 6) Ajustes para móviles (<480px) */
 @media (max-width: 480px) {
   .modal-content img {
-    max-width: 95vw;             /* En pantallas muy estrechas, usamos 95% */
-    max-height: 70vh;            /* Y menos alto para dejar espacio a flechas y X */
+    /* En móviles, hasta 95% del ancho y 70% del alto */
+    max-width: 95vw;
+    max-height: 70vh;
   }
 
   .close {
@@ -356,9 +454,10 @@ body {
   .next {
     font-size: 2.5rem;
     padding: 0.4rem;
+    left: 1rem;   /* Menos offset en móviles */
+    right: 1rem;
   }
 }
-
 
 /* ============================
    FOOTER
@@ -374,17 +473,26 @@ body {
 .footer-wrapper p {
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
+  opacity: 0.85;
 }
 
 .footer-wrapper a {
-  color: var(--color-acento);
-  text-decoration: none;
+  color: #ffffff;            /* Blanco para contraste */
+  text-decoration: underline; /* O “none”, según prefieras */
+  font-weight: 500;           /* Opcional: un poco más de peso */
+  transition: color 0.3s;
 }
+
+.footer-wrapper a:hover {
+  color: var(--color-acento-light); /* Púrpura claro al hover */
+}
+
 
 /* ============================
    RESPONSIVE (MEDIA QUERIES)
    ============================ */
 
+/* Pantallas medianas / tabletas */
 @media (max-width: 768px) {
   .main-nav {
     display: none;
@@ -409,15 +517,64 @@ body {
     display: block;
   }
 
-  /* Ajustes en modal para pantallas pequeñas */
-  .close {
+  .section-title {
     font-size: 2rem;
-    top: 0.5rem;
-    right: 1rem;
   }
 
-  .prev,
-  .next {
-    font-size: 2.5rem;
+  .hero-text-box {
+    padding: 1.5rem 2rem;
+    max-width: 80%;
+  }
+
+  .hero-title {
+    font-size: 2.25rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.125rem;
+  }
+
+  .iframe-container {
+    padding-top: 60%; /* Ajuste menor para proporción */
+  }
+}
+
+/* Pantallas pequeñas / móviles */
+@media (max-width: 480px) {
+  .site-header {
+    padding: 0.75rem 0;
+  }
+
+  .logo a {
+    font-size: 1.5rem;
+  }
+
+  .menu-toggle {
+    font-size: 1.5rem;
+  }
+
+  .hero-text-box {
+    padding: 1rem 1.5rem;
+    max-width: 95%;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .iframe-container {
+    padding-top: 75%; /* Adaptación para móviles */
+  }
+
+  .footer-wrapper p {
+    font-size: 0.85rem;
   }
 }

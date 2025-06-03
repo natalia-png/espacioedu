@@ -1,31 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Metadatos básicos -->
   <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mi Página Educativa – Juegos, Podcast y Línea de Tiempo</title>
+  <title>Mi Página Educativa – Juegos, Podcast, Línea de Tiempo y Cómic</title>
+  <meta name="description" content="Explora juegos interactivos, escucha nuestro podcast, descubre la línea de tiempo educativa y sumérgete en un cómic sobre la Segunda Guerra Mundial.">
 
-    <link rel="icon" href="assets/images/favicon.jpg " type="image/jpg" />
+  <!-- Favicon -->
+  <link rel="icon" href="assets/images/favicon.jpg" type="image/jpeg" />
 
-
-  <!-- Tipografía desde Google Fonts -->
+  <!-- Preconexión y carga optimizada de fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
     rel="stylesheet"
   />
 
-  <!-- CSS principal -->
+  <!-- Hoja de estilos principal -->
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body>
+  <!-- Enlace para saltar al contenido principal (accesibilidad) -->
+  <a class="skip-link" href="#main-content">Saltar al contenido</a>
+
   <!-- ============================
-       HEADER con logo y navegación
+       HEADER: LOGO Y NAVEGACIÓN PRINCIPAL
        ============================ -->
   <header class="site-header">
     <div class="wrapper header-wrapper">
-      <h1 class="logo">Mi Página Educativa</h1>
-      <nav class="main-nav">
+      <h1 class="logo">
+        <a href="/" aria-label="Inicio">Mi Página Educativa</a>
+      </h1>
+      <nav class="main-nav" aria-label="Menú principal">
         <ul>
           <li><a href="#juegos">Juegos</a></li>
           <li><a href="#podcast">Podcast</a></li>
@@ -33,159 +43,172 @@
           <li><a href="#galeria">Cómic</a></li>
         </ul>
       </nav>
-      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+      <button class="menu-toggle" aria-label="Abrir menú de navegación">☰</button>
     </div>
   </header>
 
   <!-- ============================
-       SECCIÓN HERO / PORTADA
+       CONTENIDO PRINCIPAL
        ============================ -->
-  <section class="hero">
-    <div class="wrapper hero-content">
-      <h2>Bienvenidos a Mi Sitio Educativo</h2>
-      <p>
-        Explora nuestros juegos interactivos, escucha nuestro podcast, descubre nuestra línea de tiempo educativa y sumérgete en nuestro cómic sobre la Segunda Guerra Mundial.
-      </p>
-    </div>
-  </section>
+  <main id="main-content">
+    <!-- ============================
+         SECCIÓN HERO / PORTADA
+         ============================ -->
+    <section class="hero section-hero">
+      <div class="wrapper hero-content">
+        <div class="hero-text-box" aria-labelledby="hero-title">
+          <h2 id="hero-title" class="hero-title">Bienvenidos a Mi Sitio Educativo</h2>
+          <p class="hero-subtitle">
+            Explora nuestros juegos interactivos, escucha nuestro podcast, descubre nuestra línea de tiempo educativa
+            y sumérgete en nuestro cómic sobre la Segunda Guerra Mundial.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         SECCIÓN JUEGOS EDUCAPLAY
+         ============================ -->
+    <section id="juegos" class="section section-juegos" aria-labelledby="juegos-title">
+      <div class="wrapper">
+        <h2 id="juegos-title" class="section-title">Juegos Interactivos</h2>
+
+        <div class="iframe-container">
+          <iframe
+            src="https://es.educaplay.com/juego/23899050-trivia_sobre_colombia.html"
+            allow="fullscreen; autoplay; allow-top-navigation-by-user-activation"
+            frameborder="0"
+            title="Trivia sobre Colombia"
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        <div class="iframe-container">
+          <iframe
+            src="https://es.educaplay.com/juego/23878596-explora_sudamerica.html"
+            allow="fullscreen; autoplay; allow-top-navigation-by-user-activation"
+            frameborder="0"
+            title="Explora Sudamérica"
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        <div class="iframe-container">
+          <iframe
+            src="https://es.educaplay.com/juego/23878416-adivina_el_futbol.html"
+            allow="fullscreen; autoplay; allow-top-navigation-by-user-activation"
+            frameborder="0"
+            title="Adivina el Fútbol"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         SECCIÓN PODCAST (YouTube)
+         ============================ -->
+    <section id="podcast" class="section section-podcast" aria-labelledby="podcast-title">
+      <div class="wrapper">
+        <h2 id="podcast-title" class="section-title">Nuestro Podcast</h2>
+        <div class="iframe-container">
+          <iframe
+            width="100%"
+            height="500"
+            src="https://www.youtube.com/embed/WpAxt9aym6o"
+            title="Podcast en YouTube"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         SECCIÓN LÍNEA DE TIEMPO (TimelineJS)
+         ============================ -->
+    <section id="timeline" class="section section-timeline" aria-labelledby="timeline-title">
+      <div class="wrapper">
+        <h2 id="timeline-title" class="section-title">Nuestra Línea de Tiempo</h2>
+        <div class="timeline-wrapper">
+          <iframe
+            src="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=v2%3A2PACX-1vTK5Voi4ss6ONmzC4B7YA_L1lRPS4XemKLguxU4Q4uGPgsZO4bYrxkxKprrMB3G7kHKqH5MN1Qmmboh&font=Default&lang=en&initial_zoom=2&width=100%25&height=650"
+            width="100%"
+            height="650"
+            frameborder="0"
+            webkitallowfullscreen
+            mozallowfullscreen
+            allowfullscreen
+            title="Línea de Tiempo Interactiva"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         SECCIÓN GALERÍA DE CÓMICS
+         ============================ -->
+    <section id="galeria" class="section section-galeria" aria-labelledby="galeria-title">
+      <div class="wrapper">
+        <h2 id="galeria-title" class="section-title">Cómic: Segunda Guerra Mundial</h2>
+        <p class="section-description">
+          Disfruta nuestro relato gráfico: haz clic en cada página para verla ampliada.
+        </p>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="assets/images/pag0.png" alt="Página 0 del cómic" data-index="0" loading="lazy" />
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/pag1.png" alt="Página 1 del cómic" data-index="1" loading="lazy" />
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/pag2.png" alt="Página 2 del cómic" data-index="2" loading="lazy" />
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/pag3.png" alt="Página 3 del cómic" data-index="3" loading="lazy" />
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/pag4.png" alt="Página 4 del cómic" data-index="4" loading="lazy" />
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/pag5.png" alt="Página 5 del cómic" data-index="5" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <!-- ============================
-       SECCIÓN JUEGOS EDUCAPLAY
+       MODAL PARA AMPLIAR CÓMICS (IMAGEN AJUSTADA)
        ============================ -->
-  <section id="juegos" class="section section-juegos">
-    <div class="wrapper">
-      <h2 class="section-title">Juegos Interactivos</h2>
-
-      <div class="iframe-container">
-        <iframe
-          src="https://es.educaplay.com/juego/23899050-trivia_sobre_colombia.html"
-          allow="fullscreen; autoplay; allow-top-navigation-by-user-activation"
-          frameborder="0"
-          title="Trivia sobre Colombia"
-        ></iframe>
-      </div>
-
-      <div class="iframe-container">
-        <iframe
-          src="https://es.educaplay.com/juego/23878596-explora_sudamerica.html"
-          allow="fullscreen; autoplay; allow-top-navigation-by-user-activation"
-          frameborder="0"
-          title="Explora Sudamérica"
-        ></iframe>
-      </div>
-
-      <div class="iframe-container">
-        <iframe
-          src="https://es.educaplay.com/juego/23878416-adivina_el_futbol.html"
-          allow="fullscreen; autoplay; allow-top-navigation-by-user-activation"
-          frameborder="0"
-          title="Palabron de 1/2 Cancha"
-        ></iframe>
-      </div>
+  <div id="modal" class="modal" aria-hidden="true" aria-labelledby="modal-title" role="dialog">
+    <span class="close" aria-label="Cerrar">&times;</span>
+    <div class="modal-content">
+      <span class="prev" aria-label="Página anterior">&#10094;</span>
+      <img id="modal-img" src="" alt="Página ampliada del cómic" />
+      <span class="next" aria-label="Página siguiente">&#10095;</span>
     </div>
-  </section>
-
-  <!-- ============================
-       SECCIÓN PODCAST (YouTube)
-       ============================ -->
-  <section id="podcast" class="section section-podcast">
-    <div class="wrapper">
-      <h2 class="section-title">Nuestro Podcast</h2>
-      <div class="iframe-container">
-        <iframe
-          width="100%"
-          height="500"
-          src="https://www.youtube.com/embed/WpAxt9aym6o"
-          title="Podcast en YouTube"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================
-       SECCIÓN LÍNEA DE TIEMPO (TimelineJS)
-       ============================ -->
-  <section id="timeline" class="section section-timeline">
-    <div class="wrapper">
-      <h2 class="section-title">Nuestra Línea de Tiempo</h2>
-      <div class="timeline-wrapper">
-        <iframe
-          src="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=v2%3A2PACX-1vTK5Voi4ss6ONmzC4B7YA_L1lRPS4XemKLguxU4Q4uGPgsZO4bYrxkxKprrMB3G7kHKqH5MN1Qmmboh&font=Default&lang=en&initial_zoom=2&width=100%25&height=650"
-          width="100%"
-          height="650"
-          frameborder="0"
-          webkitallowfullscreen
-          mozallowfullscreen
-          allowfullscreen
-          title="Línea de Tiempo"
-        ></iframe>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================
-       SECCIÓN GALERÍA DE CÓMICS
-       ============================ -->
-  <section id="galeria" class="section section-galeria">
-    <div class="wrapper">
-      <h2 class="section-title">Cómic Segunda Guerra Mundial</h2>
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="assets/images/pag0.png" alt="Página 0" data-index="0" />
-        </div>
-        <div class="gallery-item">
-          <img src="assets/images/pag1.png" alt="Página 1" data-index="1" />
-        </div>
-        <div class="gallery-item">
-          <img src="assets/images/pag2.png" alt="Página 2" data-index="2" />
-        </div>
-        <div class="gallery-item">
-          <img src="assets/images/pag3.png" alt="Página 3" data-index="3" />
-        </div>
-        <div class="gallery-item">
-          <img src="assets/images/pag4.png" alt="Página 4" data-index="4" />
-        </div>
-        <div class="gallery-item">
-          <img src="assets/images/pag5.png" alt="Página 5" data-index="5" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- … otras secciones arriba … -->
-
-<!-- ============================
-     MODAL PARA AMPLIAR CÓMICS (SÓLO IMAGEN AJUSTADA)
-     ============================ -->
-<div id="modal" class="modal">
-  <span class="close" aria-label="Cerrar">&times;</span>
-  <div class="modal-content">
-    <span class="prev" aria-label="Anterior">&#10094;</span>
-    <!-- Ya no necesitamos contenedor con overflow: sólo el IMG -->
-    <img id="modal-img" src="" alt="Página ampliada" />
-    <span class="next" aria-label="Siguiente">&#10095;</span>
   </div>
-</div>
 
   <!-- ============================
-       FOOTER
+       FOOTER CON CRÉDITOS
        ============================ -->
   <footer class="site-footer">
     <div class="wrapper footer-wrapper">
       <p>&copy; 2025 EducaPlus. Todos los derechos reservados.</p>
       <p>
         Diseño <span aria-label="icono de corazón"></span> por
-        <a href="#">Johan Daniel Perez Moreno</a>
+        <a href="#" target="_blank" rel="noopener">Johan Daniel Perez Moreno</a>
       </p>
     </div>
   </footer>
 
   <!-- ============================
-       ENLACE AL JS
+       SCRIPT PRINCIPAL
        ============================ -->
-  <script src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>
