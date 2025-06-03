@@ -316,7 +316,8 @@ body {
 }
 
 /* ============================
-   MODAL PARA AMPLIAR IMÁGENES (AJUSTADO, CENTRADO, SIN SCROLL)
+   MODAL PARA AMPLIAR IMÁGENES
+   (AJUSTADO, CENTRADO, SIN SCROLL)
    ============================ */
 
 /* 1) Contenedor principal del modal */
@@ -333,7 +334,6 @@ body {
   display: none;
 
   /* Flex para centrar el contenedor .modal-content */
-  display: flex;
   align-items: center;
   justify-content: center;
 
@@ -350,12 +350,12 @@ body {
 .modal-content {
   position: relative;
 
-  /* Centrado absoluto para navegadores que no respeten bien el flex */
+  /* Centramos absolutamente también (por seguridad) */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  /* Asegurarnos de no exceder los límites del viewport */
+  /* Que no exceda límites del viewport */
   max-width: 100%;
   max-height: 100%;
 
@@ -477,16 +477,15 @@ body {
 }
 
 .footer-wrapper a {
-  color: #ffffff;            /* Blanco para contraste */
-  text-decoration: underline; /* O “none”, según prefieras */
-  font-weight: 500;           /* Opcional: un poco más de peso */
+  color: #ffffff;            /* Color blanco para que se lea sobre fondo oscuro */
+  text-decoration: underline; /* Subrayado opcional */
+  font-weight: 500;           /* Un poco de peso extra */
   transition: color 0.3s;
 }
 
 .footer-wrapper a:hover {
-  color: var(--color-acento-light); /* Púrpura claro al hover */
+  color: var(--color-acento-light);
 }
-
 
 /* ============================
    RESPONSIVE (MEDIA QUERIES)
