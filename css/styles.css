@@ -1,0 +1,423 @@
+/* ============================
+   CONFIGURACIÓN GLOBAL
+   ============================ */
+
+:root {
+  --color-principal: #2a4054;
+  --color-secundario: #f5f5f5;
+  --color-acento: #ff6f61;
+  --fuente-principal: 'Poppins', sans-serif;
+  --espaciado-maximo: 1200px;
+  --espaciado-lateral: 1rem;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fuente-principal);
+  background-color: var(--color-secundario);
+  color: var(--color-principal);
+  line-height: 1.6;
+}
+
+/* ============================
+   WRAPPER
+   ============================ */
+
+.wrapper {
+  max-width: var(--espaciado-maximo);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--espaciado-lateral);
+  padding-right: var(--espaciado-lateral);
+}
+
+/* ============================
+   HEADER Y NAVEGACIÓN
+   ============================ */
+
+.site-header {
+  background-color: var(--color-principal);
+  color: #ffffff;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.main-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.main-nav a:hover {
+  color: var(--color-acento);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ============================
+   SECCIÓN HERO / PORTADA
+   ============================ */
+
+.hero {
+  background: url('../assets/images/hero-bg.jpg') center/cover no-repeat;
+  padding: 6rem 0;
+  color: #4b2cbb;
+  text-align: center;
+}
+
+.hero-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.hero-content p {
+  font-size: 1.125rem;
+}
+
+/* ============================
+   SECCIONES GENERALES
+   ============================ */
+
+.section {
+  padding: 4rem 0;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: var(--color-acento);
+  margin: 0.5rem auto 0;
+}
+
+/* ============================
+   IFRAME CONTAINER
+   ============================ */
+
+.iframe-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  margin-bottom: 2rem;
+}
+
+.iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================
+   LÍNEA DE TIEMPO
+   ============================ */
+
+.timeline-wrapper {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.timeline-wrapper iframe {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================
+   GALERÍA DE IMÁGENES (CÓMICS)
+   ============================ */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery-item {
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+}
+
+/* ============================
+   GALERÍA DE IMÁGENES (CÓMICS)
+   (este bloque ya lo tenías; lo incluyo por contexto)
+   ============================ */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery-item {
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+}
+
+/* ============================
+   MODAL PARA AMPLIAR IMÁGENES (SIN SCROLL INTERNO)
+   ============================ */
+
+.modal {
+  display: none;                 /* Oculto por defecto */
+  position: fixed;
+  z-index: 200;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow: hidden;              /* No permitimos scroll adicional */
+}
+
+/* Contenedor flexible que centra horizontal y vertical la imagen */
+.modal-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* La imagen se ajusta siempre para caber en pantalla (90% width/height) */
+.modal-content img {
+  max-width: 90vw;               /* Máximo 90% del ancho de la ventana */
+  max-height: 90vh;              /* Máximo 90% del alto de la ventana */
+  width: auto;
+  height: auto;
+  user-select: none;
+  pointer-events: none;          /* Para evitar clics sobre la imagen en sí */
+}
+
+/* ============================
+   BOTÓN CERRAR (“×”)
+   ============================ */
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: #fff;
+  font-size: 3rem;               /* Letra grande para que se vea fácilmente */
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+  z-index: 300;                  /* Siempre encima de la imagen */
+}
+
+.close:hover {
+  color: var(--color-acento);
+}
+
+/* ============================
+   FLECHAS DE NAVEGACIÓN (“←” y “→”)
+   ============================ */
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 3rem;               /* Flechas grandes */
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.3s;
+  padding: 0.5rem;               /* Área clicable mayor */
+  background-color: rgba(0, 0, 0, 0.4); /* Fondo semitransparente */
+  border-radius: 50%;
+  z-index: 250;
+}
+
+.prev:hover,
+.next:hover {
+  color: var(--color-acento);
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.prev {
+  left: 1rem;                    /* Pegada al borde izquierdo */
+}
+
+.next {
+  right: 1rem;                   /* Pegada al borde derecho */
+}
+
+/* ============================
+   MEDIA QUERIES PARA MÓVILES PEQUEÑOS
+   ============================ */
+
+@media (max-width: 480px) {
+  .modal-content img {
+    max-width: 95vw;             /* En pantallas muy estrechas, usamos 95% */
+    max-height: 70vh;            /* Y menos alto para dejar espacio a flechas y X */
+  }
+
+  .close {
+    font-size: 2.5rem;
+    top: 0.5rem;
+    right: 0.8rem;
+  }
+
+  .prev,
+  .next {
+    font-size: 2.5rem;
+    padding: 0.4rem;
+  }
+}
+
+
+/* ============================
+   FOOTER
+   ============================ */
+
+.site-footer {
+  background-color: var(--color-principal);
+  color: #fff;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.footer-wrapper p {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.footer-wrapper a {
+  color: var(--color-acento);
+  text-decoration: none;
+}
+
+/* ============================
+   RESPONSIVE (MEDIA QUERIES)
+   ============================ */
+
+@media (max-width: 768px) {
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--color-principal);
+    width: 100%;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .main-nav.active {
+    display: block;
+  }
+
+  /* Ajustes en modal para pantallas pequeñas */
+  .close {
+    font-size: 2rem;
+    top: 0.5rem;
+    right: 1rem;
+  }
+
+  .prev,
+  .next {
+    font-size: 2.5rem;
+  }
+}
