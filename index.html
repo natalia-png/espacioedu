@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Espacio Educativo</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@300;400&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* ===== Variables de color y espacios ===== */
+    :root {
+      --color-primario: #0D1B2A;      /* Azul petróleo oscuro */
+      --color-secundario: #1B263B;    /* Azul petróleo intermedio */
+      --color-acento: #F4D35E;        /* Dorado suave */
+      --color-fondo: #F4F1DE;         /* Crema muy claro */
+      --color-texto: #ffffff;         /* Azul petróleo para texto */
+      --color-texto-claro: #FFFFFF;   /* Blanco para texto sobre fondo oscuro */
+      --esp: 1rem;                    /* Espacio base */
+      --esp-sm: 0.5rem;               /* Espacio pequeño */
+      --esp-lg: 2rem;                 /* Espacio grande */
+      --radio: 8px;                   /* Radio de bordes */
+      --sombra: rgba(0, 0, 0, 0.1);    /* Sombra ligera */
+      --sombra-int: rgba(0, 0, 0, 0.15);/* Sombra intermedia */
+    }
+
+    /* ===== Reset básico y tipografía ===== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: var(--color-fondo);
+      color: var(--color-texto);
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+    h1, h2, h3 {
+      font-family: "Montserrat", sans-serif;
+      color: var(--color-texto);
+      margin-bottom: var(--esp-sm);
+      line-height: 1.2;
+    }
+    p {
+      margin-bottom: var(--esp);
+      font-size: 0.95rem;
+    }
+    a {
+      color: var(--color-acento);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    a:hover {
+      color: #cfa845; /* Dorado más oscuro al hover */
+    }
+    /* ===== Contenedor central ===== */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 var(--esp);
+    }
+
+    /* ===== Header y navegación ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--color-primario);
+      color: var(--color-texto-claro);
+      z-index: 1000;
+      transition: background-color 0.3s ease;
+    }
+    header.scrolled {
+      background-color: var(--color-secundario);
+    }
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--esp-sm) 0;
+    }
+    header h1 {
+      font-size: 1.4rem;
+      letter-spacing: 1px;
+    }
+    nav a {
+      margin-left: var(--esp);
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--color-texto-claro);
+    }
+    nav a:hover {
+      color: var(--color-acento);
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      height: 45vh;
+      min-height: 300px;
+      background: linear-gradient(135deg, #9b89ec 0%, #9b89ec 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-texto-claro);
+      text-align: center;
+      padding: 0 var(--esp);
+      margin-top: 56px; /* Espacio para el header fijo (aprox. 56px) */
+    }
+    .hero h2 {
+      font-size: 2rem;
+      max-width: 700px;
+      line-height: 1.2;
+    }
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 1.6rem;
+      }
+    }
+
+    /* ===== Secciones generales ===== */
+    section {
+      padding: var(--esp-lg) 0;
+    }
+    section h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: var(--esp);
+      position: relative;
+    }
+    section h2::after {
+      content: "";
+      display: block;
+      width: 50px;
+      height: 3px;
+      background-color: var(--color-acento);
+      margin: var(--esp-sm) auto 0 auto;
+      border-radius: 2px;
+    }
+
+    /* ===== Sección Juegos ===== */
+    #juegos .grid-juegos {
+      display: grid;
+      gap: var(--esp-lg);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .juego-card {
+      background-color: #FFFFFF;
+      border-radius: var(--radio);
+      box-shadow: 0 4px 10px var(--sombra);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+    }
+    .juego-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px var(--sombra-int);
+    }
+    .juego-card .badge {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: var(--color-acento);
+      color: var(--color-primario);
+      font-family: "Montserrat", sans-serif;
+      font-size: 0.75rem;
+      padding: var(--esp-sm) var(--esp);
+      border-bottom-right-radius: var(--radio);
+    }
+    .juego-card h3 {
+      text-align: center;
+      padding: var(--esp-sm) 0;
+      background-color: var(--color-secundario);
+      color: var(--color-texto-claro);
+      font-size: 1.1rem;
+      margin: var(--esp-sm) 0 0 0;
+    }
+    .juego-card iframe {
+      flex: 1;
+      border: none;
+      width: 100%;
+      min-height: 300px;
+      border-radius: 0 0 var(--radio) var(--radio);
+    }
+
+    /* ===== Sección Podcast ===== */
+    #podcast .podcast-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--esp);
+    }
+    #podcast .podcast-card {
+      background-color: #FFFFFF;
+      border-radius: var(--radio);
+      box-shadow: 0 4px 10px var(--sombra);
+      overflow: hidden;
+      max-width: 700px;
+      width: 100%;
+      transition: box-shadow 0.2s ease;
+    }
+    #podcast .podcast-card:hover {
+      box-shadow: 0 8px 20px var(--sombra-int);
+    }
+    #podcast iframe {
+      width: 100%;
+      height: 360px;
+      border: none;
+    }
+    #podcast p {
+      padding: var(--esp);
+      font-size: 0.95rem;
+      color: var(--color-texto);
+      text-align: center;
+    }
+
+    /* ===== Sección Cómic ===== */
+    #comic .comic-grid {
+      display: grid;
+      gap: var(--esp);
+      grid-template-columns: repeat(3, 1fr);
+    }
+    #comic .comic-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radio);
+      box-shadow: 0 4px 10px var(--sombra);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+    #comic .comic-grid img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px var(--sombra-int);
+    }
+
+    /* ===== Sección Línea de Tiempo ===== */
+    #timeline .timeline-card {
+      background-color: #FFFFFF;
+      border-radius: var(--radio);
+      box-shadow: 0 4px 10px var(--sombra);
+      overflow: hidden;
+      padding: var(--esp);
+    }
+    #timeline iframe {
+      width: 100%;
+      height: 550px;
+      border: none;
+      border-radius: var(--radio);
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background-color: var(--color-primario);
+      color: var(--color-texto-claro);
+      text-align: center;
+      padding: var(--esp-lg) 0;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: var(--color-acento);
+      font-weight: 500;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 1024px) {
+      /* Juegos a 2 columnas */
+      #juegos .grid-juegos {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      /* Cómic a 2 columnas */
+      #comic .comic-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      /* Juegos a 1 columna */
+      #juegos .grid-juegos {
+        grid-template-columns: 1fr;
+      }
+      /* Cómic a 1 columna */
+      #comic .comic-grid {
+        grid-template-columns: 1fr;
+      }
+      /* Podcast más compacto */
+      #podcast iframe {
+        height: 260px;
+      }
+      /* Hero más reducido */
+      .hero {
+        height: 35vh;
+      }
+      .hero h2 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===== HEADER ===== -->
+  <header id="main-header">
+    <div class="container">
+      <h1>Mi Espacio Educativo</h1>
+      <nav>
+        <a href="#juegos">Juegos</a>
+        <a href="#podcast">Podcast</a>
+        <a href="#comic">Cómic</a>
+        <a href="#timeline">Línea de tiempo</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div>
+      <h2>Bienvenido a Mi Espacio Educativo<br />
+      Recursos interactivos, podcast y cómic<br />
+      ¡Todo en un solo lugar!</h2>
+    </div>
+  </section>
+
+  <!-- ===== SECCIÓN JUEGOS ===== -->
+  <section id="juegos">
+    <div class="container">
+      <h2>Juegos Educaplay</h2>
+      <div class="grid-juegos">
+        <!-- Juego 1 -->
+        <div class="juego-card">
+          <span class="badge">Juego 1</span>
+          <h3>Trivia sobre Colombia</h3>
+          <iframe
+            src="https://es.educaplay.com/juego/23899050-trivia_sobre_colombia.html"
+            allow="fullscreen; autoplay; allow-top-navigation-by-user-activation"
+          ></iframe>
+        </div>
+        <!-- Juego 2 -->
+        <div class="juego-card">
+          <span class="badge">Juego 2</span>
+          <h3>Explora Sudamérica</h3>
+          <iframe
+            src="https://es.educaplay.com/juego/23878596-explora_sudamerica.html"
+            allow="fullscreen; autoplay; allow-top-navigation-by-user-activation"
+          ></iframe>
+        </div>
+        <!-- Juego 3 -->
+        <div class="juego-card">
+          <span class="badge">Juego 3</span>
+          <h3>Adivina el fútbol</h3>
+          <iframe
+            src="https://es.educaplay.com/juego/23878416-adivina_el_futbol.html"
+            allow="fullscreen; autoplay; allow-top-navigation-by-user-activation"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECCIÓN PODCAST ===== -->
+  <section id="podcast">
+    <div class="container">
+      <h2>Escucha nuestro Podcast</h2>
+      <div class="podcast-wrapper">
+        <div class="podcast-card">
+          <iframe
+            src="https://www.youtube.com/embed/WpAxt9aym6o"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <p>
+          Bienvenido a nuestro podcast. Aquí encontrarás conversaciones, entrevistas
+          y contenido educativo. ¡Dale play y acompáñanos!
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECCIÓN CÓMIC ===== -->
+  <section id="comic">
+    <div class="container">
+      <h2>Cómic</h2>
+      <div class="comic-grid">
+        <img src="pag0.png" alt= "Página 1 del cómic" />
+        <img src="pag1.png" alt="Página 1 del cómic" />
+        <img src="pag2.png" alt="Página 2 del cómic" />
+        <img src="pag3.png" alt="Página 3 del cómic" />
+        <img src="pag4.png" alt="Página 4 del cómic" />
+        <img src="pag6.png" alt="Página 6 del cómic" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECCIÓN LÍNEA DE TIEMPO ===== -->
+  <section id="timeline">
+    <div class="container">
+      <h2>Nuestra Línea de Tiempo</h2>
+      <div class="timeline-card">
+        <iframe
+          src="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=v2%3A2PACX-1vTK5Voi4ss6ONmzC4B7YA_L1lRPS4Xexu4Q4uGPgsZO4bYrxkxKprrMB3G7kHKqH5MN1Qmmboh&font=Default&lang=en&initial_zoom=2&width=100%25&height=650"
+          width="100%"
+          height="550"
+          webkitallowfullscreen
+          mozallowfullscreen
+          allowfullscreen
+          frameborder="0"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Mi Espacio Educativo. Por Johan Daniel Perez</p>
+    </div>
+  </footer>
+
+  <!-- ===== Script para cambiar color de header al hacer scroll ===== -->
+  <script>
+    const header = document.getElementById("main-header");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 40) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
+  </script>
+</body>
+</html>
